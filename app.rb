@@ -20,6 +20,10 @@ get '/new' do
 	erb :new		
 end
 
+post '/new' do
+	
+end
+
 get '/authors' do
 	erb :authors		
 end
