@@ -16,6 +16,7 @@ class Comment < ActiveRecord::Base
 end
 
 get '/' do
+	@posts = Post.order('created_at DESC')
 	erb :index			
 end
 
@@ -37,3 +38,5 @@ end
 get '/authors' do
 	erb :authors		
 end
+
+
