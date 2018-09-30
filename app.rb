@@ -19,3 +19,7 @@ end
 get '/new' do
 	erb :new		
 end
+
+get '/authors' do
+	erb :authors		
+end
