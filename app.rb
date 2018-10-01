@@ -49,13 +49,15 @@ get '/details/:id' do
 end
 
 post '/details/:id' do
+	@post = Post.find(params[:id])
+	@comments = Comment.order('created_at DESC')
 	@c = Comment.new params[:comment]
 	if @c.save
 		erb "<h4>Comment was created.</h4>"
 	else
-		@error = @p.errors.full_messages.first
-		erb ":details"
+		@error = @c.errors.full_messages.first
+		erb :details
 	end
-	erb ":details"
+	erb :details
 end
 
