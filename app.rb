@@ -13,6 +13,8 @@ class Post < ActiveRecord::Base
 end
 
 class Comment < ActiveRecord::Base
+	validates :author, presence: true
+	validates :comment, presence: true
 end
 
 get '/' do
@@ -39,4 +41,21 @@ get '/authors' do
 	erb :authors		
 end
 
+get '/details/:id' do
+	@post = Post.find(params[:id])
+	@row = @post[0]
+	@c = Comment.new
+	erb ":details"
+end
+
+post '/details/:id' do
+	@c = Comment.new params[:comment]
+	if @c.save
+		erb "<h4>Comment was created.</h4>"
+	else
+		@error = @p.errors.full_messages.first
+		erb ":details"
+	end
+	erb ":details"
+end
 
