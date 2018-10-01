@@ -1,12 +1,11 @@
 <h4>Post details:</h4>
 <br>
 
-<p>
-				<%= @post.title %>
-				<%= @post.author %>
-				<%= @post.content %>
-				<%= @post.created_at %>
-</p>
+	<b style="font-size: 150%"><%= @post.title %></b>
+	<br><br>
+	<p><%= @post.content %></p>
+	<p style="font-size: 85%"> Author: <%= @post.author %></p>
+	<p style="font-size: 75%"> Created at: <%= @post.created_at %></p>
 
 <br>
 <h4>Comments:</h4>	
@@ -21,7 +20,7 @@
 		<hr />
 <% end %>
 
-<form action="/details/<%= comment[id] %>" method="POST">
+<form action="/details/<%= @post.id %>" method="POST">
   <div class="form-group">
   	<input name="comment[author]" type="text" class="form-control" placeholder="Your name" value="<%= @c.author %>"> <br>
     <textarea name="comment[comment]" class="form-control" rows="2" placeholder="Tipe comment text here..." value="<%= @c.comment %>"></textarea>

@@ -43,9 +43,9 @@ end
 
 get '/details/:id' do
 	@post = Post.find(params[:id])
-	@row = @post[0]
 	@c = Comment.new
-	erb ":details"
+	@comments = Comment.order('created_at DESC')
+	erb :details
 end
 
 post '/details/:id' do
